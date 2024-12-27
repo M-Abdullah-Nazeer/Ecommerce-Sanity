@@ -1,10 +1,15 @@
 import AddtoBasketButton from "@/components/AddtoBasketButton";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { imageUrl } from "@/lib/imageUrl";
 import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
+
+export const dynamic = "force-static";
+export const revalidate = 86400; //revalidate at most every 60 seconds
+
 
 async function ProductPage({ params, }: {
     params: Promise<{
@@ -14,6 +19,9 @@ async function ProductPage({ params, }: {
 
     const { slug } = await params;
     const product = await getProductBySlug(slug);
+
+
+console.log(crypto.randomUUID().slice(0,5) + `>>> Rendered the product page cache for ${slug}`);
 
     if (!product) {
         return notFound();

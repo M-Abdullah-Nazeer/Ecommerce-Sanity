@@ -67,7 +67,7 @@ function Header() {
 
                     <ClerkLoaded>
 
-                        {isSignedIn && (
+                        {isLoaded && isSignedIn && (
                             <Link href="/orders"
                                 className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-maincol hover:bg-hovercol text-white font-bold py-2 px-4 rounded"
                             >

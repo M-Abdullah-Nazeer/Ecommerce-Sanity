@@ -2,7 +2,7 @@ import { COUPON_CODES } from "@/sanity/lib/sales/couponCodes";
 import { getActiveSaleByCouponCode } from "@/sanity/lib/sales/getActiveSaleByCouponCode";
 
 async function SaleBanner() {
-    const sale = await getActiveSaleByCouponCode(COUPON_CODES.black2025)
+    const sale = await getActiveSaleByCouponCode(COUPON_CODES.BLACKFRIDAY)
 
     if (!sale?.isActive) {
         return null;
