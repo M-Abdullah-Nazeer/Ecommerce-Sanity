@@ -49,7 +49,7 @@ function Header() {
 
                 <div className="flex items-center space-x-4 mt-4 sm:mt-0 flex-1 md:flex-none">
 
-                    <Link href="/cart"
+                    <Link href="/basket"
                         className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-maincol hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     >
 

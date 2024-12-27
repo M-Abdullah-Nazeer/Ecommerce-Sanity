@@ -7,7 +7,7 @@ import stripe from "@/lib/stripe";
 export type Metadata = {
     orderNumber: string;
     customerName: string;
-    customerEamil: string;
+    customerEmail: string;
     clerkUserId: string;
 }
 
@@ -33,7 +33,7 @@ export async function createCheckoutSession(
 
         // search for existing customer by email
         const customers = await stripe.customers.list({
-            email: metadata.customerEamil,
+            email: metadata.customerEmail,
             limit: 1,
         });
 
@@ -49,12 +49,12 @@ export async function createCheckoutSession(
 
 const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`;
 
-const cancelUrl = `${baseUrl}/basket`;
+const cancelUrl = `${baseUrl}/basket`; 
 
         const session = await stripe.checkout.sessions.create({
-            customer: customerId,
+            customer: customerId || undefined,
             customer_creation: customerId ? undefined : "always",
-            customer_email: !customerId ? metadata.customerEamil : "undefined",
+            customer_email: !customerId ? metadata.customerEmail : undefined,
             metadata,
             mode: "payment",
             allow_promotion_codes: true,
